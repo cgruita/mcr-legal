@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign up for text notifications - Missed Call Receptionist</title>
+<style>
+body { font-family: system-ui, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; line-height: 1.55; color: #222; }
+label { display: block; margin-top: 16px; font-weight: 600; }
+input[type=text], input[type=tel], input[type=email] { width: 100%; padding: 10px; font-size: 1rem; box-sizing: border-box; margin-top: 4px; }
+.consent { margin-top: 20px; padding: 14px; background: #f5f5f5; border-radius: 6px; font-size: 0.95rem; }
+.consent label { font-weight: normal; margin-top: 0; display: flex; gap: 10px; }
+button { margin-top: 20px; padding: 12px 20px; font-size: 1rem; background: #222; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<h1>Sign up for text notifications</h1>
+<p>Missed Call Receptionist sends the business owner a text when a call comes in to the receptionist line. Enter your details below if you want to receive these notifications.</p>
+
+<form action="https://formspree.io/f/mrpqpodk" method="POST">
+  <label>Business owner name
+    <input type="text" name="name" required>
+  </label>
+  <label>Mobile number
+    <input type="tel" name="phone" required placeholder="+1 555 555 5555">
+  </label>
+  <label>Email (optional)
+    <input type="email" name="email">
+  </label>
+
+  <div class="consent">
+    <label>
+      <input type="checkbox" name="consent" value="yes" required>
+      <span>I agree to receive recurring automated text messages from Missed Call Receptionist at the mobile number above, about calls to my business line. Message frequency varies with call volume. Message and data rates may apply. Reply STOP to opt out at any time, or HELP for help. Consent is not a condition of any purchase. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</span>
+    </label>
+  </div>
+
+  <button type="submit">Sign up</button>
+</form>
+</body>
+</html>
