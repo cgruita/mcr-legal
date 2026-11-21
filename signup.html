@@ -39,8 +39,25 @@ button.secondary { background: #fff; color: #222; border: 1px solid #222; margin
 
   <p class="note">Text messages are optional. If you don't want them, skip this step: you can still use the service and get alerts by email.</p>
 
-  <button type="submit" name="choice" value="text">Sign up for text alerts</button>
-  <button type="submit" name="choice" value="skip" formnovalidate class="secondary">No thanks, skip texts</button>
+  <button type="submit" name="choice" value="text" id="sms-submit">Sign up for text alerts</button>
+  <button type="submit" name="choice" value="skip" id="skip-submit" class="secondary">No thanks, skip texts</button>
 </form>
+
+<script>
+  // Name is always required. Phone and consent are required only for text alerts,
+  // so the skip button turns them off before the browser validates the form.
+  (function () {
+    var phone = document.querySelector('input[name=phone]');
+    var consent = document.querySelector('input[name=consent]');
+    document.getElementById('sms-submit').addEventListener('click', function () {
+      phone.required = true;
+      consent.required = true;
+    });
+    document.getElementById('skip-submit').addEventListener('click', function () {
+      phone.required = false;
+      consent.required = false;
+    });
+  })();
+</script>
 </body>
 </html>
