@@ -11,6 +11,8 @@ input[type=text], input[type=tel], input[type=email] { width: 100%; padding: 10p
 .consent { margin-top: 20px; padding: 14px; background: #f5f5f5; border-radius: 6px; font-size: 0.95rem; }
 .consent label { font-weight: normal; margin-top: 0; display: flex; gap: 10px; }
 button { margin-top: 20px; padding: 12px 20px; font-size: 1rem; background: #222; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+button.secondary { background: #fff; color: #222; border: 1px solid #222; margin-left: 8px; }
+.note { font-size: 0.9rem; color: #555; margin-top: 16px; }
 </style>
 </head>
 <body>
@@ -21,7 +23,7 @@ button { margin-top: 20px; padding: 12px 20px; font-size: 1rem; background: #222
   <label>Business owner name
     <input type="text" name="name" required>
   </label>
-  <label>Mobile number
+  <label>Mobile number (for text alerts)
     <input type="tel" name="phone" required placeholder="+1 555 555 5555">
   </label>
   <label>Email (optional)
@@ -31,11 +33,14 @@ button { margin-top: 20px; padding: 12px 20px; font-size: 1rem; background: #222
   <div class="consent">
     <label>
       <input type="checkbox" name="consent" value="yes" required>
-      <span>I agree to receive recurring automated text messages from Missed Call Receptionist at the mobile number above, about calls to my business line. Message frequency varies with call volume. Message and data rates may apply. Reply STOP to opt out at any time, or HELP for help. Consent is not a condition of any purchase. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</span>
+      <span>(Needed only for texts) I agree to receive recurring automated text messages from Missed Call Receptionist at the mobile number above, about calls to my business line. Message frequency varies with call volume. Message and data rates may apply. Reply STOP to opt out at any time, or HELP for help. Consent is not a condition of any purchase or of using the service. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</span>
     </label>
   </div>
 
-  <button type="submit">Sign up</button>
+  <p class="note">Text messages are optional. If you don't want them, skip this step: you can still use the service and get alerts by email.</p>
+
+  <button type="submit" name="choice" value="text">Sign up for text alerts</button>
+  <button type="submit" name="choice" value="skip" formnovalidate class="secondary">No thanks, skip texts</button>
 </form>
 </body>
 </html>
