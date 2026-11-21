@@ -26,8 +26,8 @@ button.secondary { background: #fff; color: #222; border: 1px solid #222; margin
   <label>Mobile number (for text alerts)
     <input type="tel" name="phone" placeholder="+1 555 555 5555">
   </label>
-  <label>Email (optional)
-    <input type="email" name="email">
+  <label>Email (<span id="email-label-note">optional</span>)
+    <input type="email" name="email" id="email-input">
   </label>
 
   <div class="consent">
@@ -37,25 +37,32 @@ button.secondary { background: #fff; color: #222; border: 1px solid #222; margin
     </label>
   </div>
 
-  <p class="note">Text messages are optional. If you don't want them, skip this step: you can still use the service and get alerts by email.</p>
+  <p class="note">Text messages are optional. If you skip texts, email is required so we can send you your alerts.</p>
 
   <button type="submit" name="choice" value="text" id="sms-submit">Sign up for text alerts</button>
   <button type="submit" name="choice" value="skip" id="skip-submit" class="secondary">No thanks, skip texts</button>
 </form>
 
 <script>
-  // Name is always required. Phone and consent are required only for text alerts,
-  // so the skip button turns them off before the browser validates the form.
+  // Name is always required. Phone and consent are required only for text alerts.
+  // Email is required only when the owner skips texts, since it is then the only alert channel.
+  // The click handlers run before the browser validates the form, so they set the flags in time.
   (function () {
     var phone = document.querySelector('input[name=phone]');
     var consent = document.querySelector('input[name=consent]');
+    var email = document.getElementById('email-input');
+    var emailNote = document.getElementById('email-label-note');
     document.getElementById('sms-submit').addEventListener('click', function () {
       phone.required = true;
       consent.required = true;
+      email.required = false;
+      emailNote.textContent = 'optional';
     });
     document.getElementById('skip-submit').addEventListener('click', function () {
       phone.required = false;
       consent.required = false;
+      email.required = true;
+      emailNote.textContent = 'required if you skip texts';
     });
   })();
 </script>
